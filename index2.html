@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="株式会社トップリーチは、すべての企業に最適な営業力を提供します。営業の再定義で、日本のビジネスをもっと強く。">
+    <meta name="keywords" content="営業支援,営業代行,セールス,ビジネス成長,トップリーチ,営業戦略">
+    <meta property="og:title" content="株式会社トップリーチ - すべての企業に、最適な営業力を">
+    <meta property="og:description" content="営業の再定義で、日本のビジネスをもっと強く">
+    <meta property="og:type" content="website">
+    <title>株式会社トップリーチ - すべての企業に、最適な営業力を</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #0047FF;
+            --secondary-blue: #00D4FF;
+            --dark-blue: #001B44;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 5px;
+        }
+        
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 71, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 71, 255, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 71, 255, 0.3);
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(180deg, var(--white) 0%, rgba(0, 212, 255, 0.05) 100%);
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .shape {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(0, 71, 255, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+        
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 1rem 3rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 71, 255, 0.3);
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 71, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 1rem 3rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-blue);
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 71, 255, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 71, 255, 0.2);
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 71, 255, 0.1) 2px,
+                rgba(0, 71, 255, 0.1) 4px
+            );
+            animation: scan 8s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { transform: translate(-50%, -50%) translateY(-100%); }
+            100% { transform: translate(-50%, -50%) translateY(100%); }
+        }
+        
+        /* 会社概要表 */
+        .company-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 102, 204, 0.08);
+        }
+        
+        .company-table th,
+        .company-table td {
+            padding: 1.5rem 2rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .company-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--text-dark);
+            width: 30%;
+        }
+        
+        .company-table td {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        .company-table tr:last-child th,
+        .company-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* セクション共通スタイル */
+        section {
+            padding: 120px 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .section-label {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        
+        /* 会社概要 */
+        .company-info {
+            background-color: var(--light-gray);
+        }
+        
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .info-text h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .info-details {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .detail-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 71, 255, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* MVV */
+        .mvv {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        
+        .mvv-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 71, 255, 0.1);
+        }
+        
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 71, 255, 0.15);
+        }
+        
+        .mvv-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .mvv-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: 800;
+        }
+        
+        .mvv-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .mvv-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        /* お問い合わせ */
+        .contact {
+            background: linear-gradient(180deg, var(--light-gray) 0%, var(--white) 100%);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-details {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 71, 255, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 71, 255, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #E5E5E5;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(0, 71, 255, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 71, 255, 0.3);
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* モバイルメニュー */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger::before {
+            top: -8px;
+        }
+        
+        .hamburger::after {
+            bottom: -8px;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .mvv-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* アニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">TOPREACH</a>
+            <ul class="nav-links">
+                <li><a href="#company">会社概要</a></li>
+                <li><a href="#mvv">MVV</a></li>
+                <li><a href="#contact" class="cta-button">お問い合わせ</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1>
+                    <span>すべての企業に、</span><br>
+                    最適な営業力を。
+                </h1>
+                <p>
+                    営業の再定義で、日本のビジネスをもっと強く。<br>
+                    私たちは、クライアントの成長エンジンとして機能します。
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">無料相談を申し込む</a>
+                    <a href="#company" class="btn-secondary">詳しく見る</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in">
+                <div class="hero-image"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="company" class="company-info">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="section-label">ABOUT US</p>
+                <h2>会社概要</h2>
+                <p class="section-subtitle">
+                    柔軟かつ実行力のある営業支援で、企業の成長を加速させます
+                </p>
+            </div>
+            
+            <div class="info-content">
+                <div class="info-text slide-in-left">
+                    <h3>営業の力で世界を変える</h3>
+                    <p>
+                        株式会社トップリーチは、「すべての企業に、最適な営業力を」というミッションのもと、
+                        あらゆる業界・業務において柔軟かつ実行力のある営業支援を提供しています。
+                    </p>
+                    <p>
+                        営業を「属人的なもの」から「再現性ある成長戦略」へと進化させ、
+                        すべての企業が"売れる仕組み"を持つ社会の実現を目指します。
+                    </p>
+                    <div class="info-details">
+                        <table class="company-table">
+                            <tbody>
+                                <tr>
+                                    <th>会社名</th>
+                                    <td>株式会社トップリーチ</td>
+                                </tr>
+                                <tr>
+                                    <th>代表取締役</th>
+                                    <td>藤井 準也</td>
+                                </tr>
+                                <tr>
+                                    <th>所在地</th>
+                                    <td>〒150-0021<br>東京都渋谷区恵比寿西2-4-8 ウィンド恵比寿ビル8F</td>
+                                </tr>
+                                <tr>
+                                    <th>主要取引銀行</th>
+                                    <td>住信SBIネット銀行</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="info-visual slide-in-right">
+                    <!-- ここに画像やグラフィックを配置 -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="mvv" class="mvv">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="section-label">OUR VALUES</p>
+                <h2>Mission・Vision・Value</h2>
+                <p class="section-subtitle">
+                    私たちが大切にしている価値観と目指す未来
+                </p>
+            </div>
+            
+            <div class="mvv-grid">
+                <div class="mvv-card fade-in">
+                    <div class="mvv-icon">M</div>
+                    <h3>Mission</h3>
+                    <p>
+                        すべての企業に、最適な営業力を。<br>
+                        私たちは、あらゆる業界・業務において柔軟かつ実行力のある営業支援を提供し、
+                        クライアントの成長エンジンとして機能します。
+                    </p>
+                </div>
+                <div class="mvv-card fade-in">
+                    <div class="mvv-icon">V</div>
+                    <h3>Vision</h3>
+                    <p>
+                        営業の再定義で、日本のビジネスをもっと強く。<br>
+                        営業という機能を「属人的なもの」から「再現性ある成長戦略」へと進化させ、
+                        すべての企業が"売れる仕組み"を持つ社会をつくります。
+                    </p>
+                </div>
+                <div class="mvv-card fade-in">
+                    <div class="mvv-icon">V</div>
+                    <h3>Value</h3>
+                    <p>
+                        「成果にコミット」「柔軟性」「実行力」を大切にし、
+                        クライアントの期待を超える営業支援を提供し続けます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="section-label">CONTACT US</p>
+                <h2>お問い合わせ</h2>
+                <p class="section-subtitle">
+                    お気軽にご相談ください。専門スタッフが丁寧に対応いたします
+                </p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info slide-in-left">
+                    <h3>まずはお気軽にご相談ください</h3>
+                    <p>
+                        営業力強化のご相談、営業代行のお見積もり、
+                        その他サービスに関するご質問など、どんなことでもお問い合わせください。
+                    </p>
+                </div>
+                
+                <form class="contact-form slide-in-right" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">会社名</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">お名前 <span style="color: #FF4444;">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span style="color: #FF4444;">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">電話番号</label>
+                            <input type="tel" id="tel" name="tel">
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="subject">お問い合わせ種別</label>
+                        <select id="subject" name="subject">
+                            <option value="">選択してください</option>
+                            <option value="consultation">無料相談</option>
+                            <option value="estimate">お見積もり</option>
+                            <option value="service">サービスについて</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">お問い合わせ内容 <span style="color: #FF4444;">*</span></label>
+                        <textarea id="message" name="message" required placeholder="ご相談内容をご記入ください"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">送信する</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>TOPREACH</h3>
+                <p>
+                    私たちは、営業の力で企業と社会の未来を創造します。<br>
+                    お客様の成功が、私たちの成功です。
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>サービス</h4>
+                <ul>
+                    <li><a href="#">営業代行</a></li>
+                    <li><a href="#">営業コンサルティング</a></li>
+                    <li><a href="#">営業研修</a></li>
+                    <li><a href="#">営業戦略立案</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>企業情報</h4>
+                <ul>
+                    <li><a href="#company">会社概要</a></li>
+                    <li><a href="#mvv">MVV</a></li>
+                    <li><a href="#">採用情報</a></li>
+                    <li><a href="#">ニュース</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>サポート</h4>
+                <ul>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                    <li><a href="#">よくある質問</a></li>
+                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="#">利用規約</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TOPREACH Inc. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // ヘッダーのスクロール処理
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // メールアドレス入力欄の正規化処理
+        function normalizeEmailInput(input) {
+            let value = input.value;
+            
+            // 全角文字を半角に変換
+            value = value.replace(/＠/g, '@')  // 全角@を半角@に
+                        .replace(/．/g, '.')  // 全角ピリオドを半角ピリオドに
+                        .replace(/－/g, '-')  // 全角ハイフンを半角ハイフンに
+                        .replace(/＿/g, '_')  // 全角アンダースコアを半角アンダースコアに
+                        .replace(/[０-９]/g, function(s) {
+                            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                        })  // 全角数字を半角数字に
+                        .replace(/[Ａ-Ｚａ-ｚ]/g, function(s) {
+                            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                        });  // 全角英字を半角英字に
+            
+            // 各種空白文字を削除
+            value = value.replace(/[\u0020\u3000\u00A0\u2000-\u200F\u2028-\u202F]/g, '');
+            
+            // 不可視文字（ゼロ幅スペースなど）を削除
+            value = value.replace(/[\u200B\u200C\u200D\uFEFF]/g, '');
+            
+            input.value = value;
+        }
+        
+        // メールアドレス入力欄にイベントリスナーを設定
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            
+            if (emailInput) {
+                // 入力時にリアルタイムで正規化
+                emailInput.addEventListener('input', function() {
+                    normalizeEmailInput(this);
+                });
+                
+                // ペースト時にも正規化
+                emailInput.addEventListener('paste', function() {
+                    setTimeout(() => {
+                        normalizeEmailInput(this);
+                    }, 10);
+                });
+                
+                // フォーカスが外れた時にも最終チェック
+                emailInput.addEventListener('blur', function() {
+                    normalizeEmailInput(this);
+                });
+            }
+        });
+
+        // フォーム送信処理
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // 送信前にメールアドレスを最終正規化
+            const emailInput = document.getElementById('email');
+            if (emailInput) {
+                normalizeEmailInput(emailInput);
+            }
+            
+            // ここで実際の送信処理を実装
+            alert('お問い合わせを受け付けました。担当者より2営業日以内にご連絡いたします。');
+            event.target.reset();
+        }
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // 構造化データ
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "Corporation",
+            "name": "株式会社トップリーチ",
+            "url": window.location.href,
+            "logo": window.location.origin + "/logo.png",
+            "description": "すべての企業に、最適な営業力を。営業の再定義で、日本のビジネスをもっと強く。",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "渋谷区恵比寿西2-4-8 ウィンド恵比寿ビル8F",
+                "addressLocality": "東京都",
+                "postalCode": "150-0021",
+                "addressCountry": "JP"
+            },
+            "telephone": "+81-3-1234-5678",
+            "email": "info@topreach.co.jp",
+            "founder": "藤井準也"
+        };
+        
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(structuredData);
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
