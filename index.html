@@ -841,8 +841,6 @@
                 </p>
             </div>
             
-
-            
             <div class="info-content">
                 <div class="info-text slide-in-left">
                     <h3>営業の力で世界を変える</h3>
@@ -1056,9 +1054,65 @@
             });
         });
         
+        // メールアドレス入力欄の正規化処理
+        function normalizeEmailInput(input) {
+            let value = input.value;
+            
+            // 全角文字を半角に変換
+            value = value.replace(/＠/g, '@')  // 全角@を半角@に
+                        .replace(/．/g, '.')  // 全角ピリオドを半角ピリオドに
+                        .replace(/－/g, '-')  // 全角ハイフンを半角ハイフンに
+                        .replace(/＿/g, '_')  // 全角アンダースコアを半角アンダースコアに
+                        .replace(/[０-９]/g, function(s) {
+                            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                        })  // 全角数字を半角数字に
+                        .replace(/[Ａ-Ｚａ-ｚ]/g, function(s) {
+                            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                        });  // 全角英字を半角英字に
+            
+            // 各種空白文字を削除
+            value = value.replace(/[\u0020\u3000\u00A0\u2000-\u200F\u2028-\u202F]/g, '');
+            
+            // 不可視文字（ゼロ幅スペースなど）を削除
+            value = value.replace(/[\u200B\u200C\u200D\uFEFF]/g, '');
+            
+            input.value = value;
+        }
+        
+        // メールアドレス入力欄にイベントリスナーを設定
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            
+            if (emailInput) {
+                // 入力時にリアルタイムで正規化
+                emailInput.addEventListener('input', function() {
+                    normalizeEmailInput(this);
+                });
+                
+                // ペースト時にも正規化
+                emailInput.addEventListener('paste', function() {
+                    setTimeout(() => {
+                        normalizeEmailInput(this);
+                    }, 10);
+                });
+                
+                // フォーカスが外れた時にも最終チェック
+                emailInput.addEventListener('blur', function() {
+                    normalizeEmailInput(this);
+                });
+            }
+        });
+
         // フォーム送信処理
         function handleSubmit(event) {
             event.preventDefault();
+            
+            // 送信前にメールアドレスを最終正規化
+            const emailInput = document.getElementById('email');
+            if (emailInput) {
+                normalizeEmailInput(emailInput);
+            }
+            
             // ここで実際の送信処理を実装
             alert('お問い合わせを受け付けました。担当者より2営業日以内にご連絡いたします。');
             event.target.reset();
